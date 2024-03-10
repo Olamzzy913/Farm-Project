@@ -48,7 +48,6 @@
               />
 
               <div class="flex flex-col">
-                >
                 <h1 class="text-[1.9rem] md:text-[2.5rem] font-medium text-[#1a2219d7]">
                   {{ item.first_name }} {{ item.last_name }}
                 </h1>
