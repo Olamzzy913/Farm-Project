@@ -110,6 +110,10 @@
               >
                 <option value="Abadam">Abadam</option>
                 <option value="Abaji">Abaji</option>
+                <option value="Abak">Abak</option>
+                <option value="Abakaliki">Abakaliki</option>
+                <option value="Aba North">Aba North</option>
+                <option value="Aba South">Aba South</option>
                 <option value=""></option>
               </vee-field>
               <ErrorMessage class="text-red-600" name="lga" />

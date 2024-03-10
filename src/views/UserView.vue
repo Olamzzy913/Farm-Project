@@ -65,7 +65,7 @@
                   user Details
                 </h3>
                 <p class="text-[1.4rem] md:text-[1.9rem] font-normal text-[#1a2219d7]">
-                  <i class="fa-solid fa-pen-to-square cursor-pointer"></i>
+                  <i @click="edit = true" class="fa-solid fa-pen-to-square cursor-pointer"></i>
                 </p>
               </div>
 
@@ -121,6 +121,198 @@
         </div>
       </div>
     </section>
+
+    <div v-if="edit" class="blur-background">
+      <!-- The form popup -->
+      <div
+        class="bg-white p-6 md:p-12 lg:p-20 rounded-md w-[32rem] smi:w-[38rem] md:w-[50rem] lg:w-[70rem]"
+      >
+        <div class="flex justify-between">
+          <h2 class="text-[1.5rem] font-medium">Edit User Profile</h2>
+          <i @click="closeForm" class="fa-solid fa-close text-[1.8rem] cursor-pointer"></i>
+        </div>
+        <form @submit.prevent="submitForm">
+          <div class="flex-col max-w-full w-full items-center justify-center flex mt-8">
+            <div class="max-w-full w-full gap-4 grid grid-cols-2 mt-8">
+              <div class="">
+                <label for="first_name" class="text-[1rem]">First Name</label>
+                <input
+                  type="text"
+                  name="first_name"
+                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
+                  v-model="item.first_name"
+                />
+              </div>
+
+              <div class="">
+                <label for="last_name" class="text-[1rem]">Last Name</label>
+                <input
+                  type="text"
+                  name="last_name"
+                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
+                  v-model="item.last_name"
+                />
+              </div>
+            </div>
+
+            <div class="max-w-full w-full gap-4 grid grid-cols-2 mt-8">
+              <div class="">
+                <label for="email" class="text-[1rem]">Email</label>
+                <input
+                  type="text"
+                  name="email"
+                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
+                  v-model="item.email"
+                />
+              </div>
+
+              <div class="">
+                <label for="phone" class="text-[1rem]">Phone Number</label>
+                <input
+                  type="text"
+                  name="phone"
+                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
+                  v-model="item.phone"
+                />
+              </div>
+            </div>
+
+            <div class="max-w-full w-full gap-4 grid grid-cols-2 mt-8">
+              <div class="">
+                <label for="password" class="text-[1rem]">Password</label>
+                <input
+                  type="text"
+                  name="password"
+                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
+                  v-model="item.password"
+                />
+              </div>
+
+              <div class="">
+                <label for="crop_type" class="text-[1rem]">Crop Type</label>
+                <input
+                  type="text"
+                  name="crop_type"
+                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
+                  v-model="item.crop_type"
+                />
+              </div>
+            </div>
+
+            <div class="max-w-full w-full gap-4 grid grid-cols-2 mt-8">
+              <div class="">
+                <label for="state" class="text-[1rem]">State</label>
+                <select
+                  name="state"
+                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
+                  v-model="item.state"
+                >
+                  <option value="Abia ">Abia</option>
+                  <option value="Adamawa">Adamawa</option>
+                  <option value="Akwa Ibom">Akwa Ibom</option>
+                  <option value="Anambra">Anambra</option>
+                  <option value="Bauchi">Bauchi</option>
+                  <option value="Bayelsa">Bayelsa</option>
+                  <option value="Benue">Benue</option>
+                  <option value="Borno">Borno</option>
+                  <option value="Cross River">Cross River</option>
+                  <option value="Delta">Delta</option>
+                  <option value="Ebonyi">Ebonyi</option>
+                  <option value="Edo">Edo</option>
+                  <option value="Ekiti">Ekiti</option>
+                  <option value="Enugu">Enugu</option>
+                  <option value="Gombe">Gombe</option>
+                  <option value="Imo">Imo</option>
+                  <option value="Jigawa">Jigawa</option>
+                  <option value="Kaduna">Kaduna</option>
+                  <option value="Kano">Kano</option>
+                  <option value="Katsina">Katsina</option>
+                  <option value="Kebbi">Kebbi</option>
+                  <option value="Kogi">Kogi</option>
+                  <option value="Kwara">Kwara</option>
+                  <option value="Lagos">Lagos</option>
+                  <option value="Nasarawa">Nasarawa</option>
+                  <option value="Niger">Niger</option>
+                  <option value="Ogun">Ogun</option>
+                  <option value="Ondo">Ondo</option>
+                  <option value="Osun">Osun</option>
+                  <option value="Oyo">Oyo</option>
+                  <option value="Plateau">Plateau</option>
+                  <option value="Rivers">Rivers</option>
+                  <option value="Sokoto">Sokoto</option>
+                  <option value="Taraba">Taraba</option>
+                  <option value="Yobe">Yobe</option>
+                  <option value="Zamfara">Zamfara</option>
+                </select>
+              </div>
+
+              <div class="">
+                <label for="country" class="text-[1rem]">Country</label>
+                <input
+                  type="text"
+                  name="country"
+                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
+                  v-model="item.country"
+                />
+              </div>
+            </div>
+
+            <div class="max-w-full w-full gap-4 grid grid-cols-2 mt-8">
+              <div class="">
+                <label for="gender" class="text-[1rem]">Gender</label>
+                <select
+                  name="gender"
+                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
+                  v-model="item.gender"
+                >
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+
+              <div class="">
+                <label for="crop_type" class="text-[1rem]">Address</label>
+                <input
+                  type="text"
+                  name="crop_type"
+                  v-model="item.street_address"
+                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
+                />
+              </div>
+            </div>
+
+            <div class="max-w-full w-full gap-4 grid grid-cols-2 mt-8">
+              <div class="">
+                <label for="lga" class="text-[1rem]">Local Government Area</label>
+                <input
+                  type="text"
+                  name="lga"
+                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
+                  v-model="item.lga"
+                />
+              </div>
+
+              <div class="">
+                <label for="bvn" class="text-[1rem]">BVN</label>
+                <input
+                  type="text"
+                  name="bvn"
+                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
+                  v-model="item.bvn"
+                />
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="w-full cursor-pointer mt-8 px-[1.6rem] py-[.8rem] text-center text-white text-[1.5rem] bg-primary rounded-xl"
+            >
+              <div class="loader mx-auto" v-if="storing"></div>
+              <span v-else>Submit</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </main>
 </template>
 
@@ -131,11 +323,33 @@ import { useRouter } from 'vue-router'
 
 export default {
   setup() {
+    const edit = ref(false)
     const gotData = ref(false)
+    const storing = ref(false)
     const router = useRouter()
     let item = reactive({})
     const token = localStorage.getItem('token')
     const toast = useToast()
+
+    const closeForm = () => {
+      edit.value = false
+    }
+
+    const userData = ref({
+      firstName: item.first_name,
+      lastName: item.last_name,
+      email: item.email,
+      phone: item.phone,
+      usernin: item.nin,
+      userstate: item.state,
+      street_address: item.street_address,
+      crop_type: item.crop_type,
+      lga: item.lga,
+      usercountry: item.country,
+      usergender: item.gender,
+      userbvn: item.bvn,
+      password: item.password
+    })
 
     const userDataCall = async (token) => {
       const url = 'https://api.farmci.com/db/users/farm/get/profile'
@@ -202,6 +416,10 @@ export default {
 
     return {
       gotData,
+      edit,
+      userData,
+      storing,
+      closeForm,
       userDataCall,
       fetchData,
       userDetails,
@@ -226,5 +444,18 @@ export default {
   0% {
     background-position: right;
   }
+}
+
+.blur-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+  backdrop-filter: blur(10px); /* Adjust the blur amount as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
