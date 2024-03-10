@@ -32,10 +32,19 @@ export default function useRegisterUser() {
       console.log(generatedUsername)
     } catch (err) {
       // If there's an error, update the error state
-      error.value = 'An error occurred during registration an input has been used before.'
-      // err.response.data.message ||
-      // console.log(err.response.responseBody, err.response)
-      toast.error(error.value)
+
+      if (err.response.status === 400) {
+        // error.value = 'An error occurred during registration an input has been used before.'
+        const issue = err.response.data.responseBody.errors.account
+        const errIssue = issue[Object.keys(issue)[0]]
+        error.value = `An error occurred during registration a ${errIssue} before.`
+        // err.response.data.message ||
+        console.log(err.response.data.responseBody.errors.account, error.value)
+        toast.error(error.value)
+      } else {
+        error.value = `Lost Internet connection`
+        toast.error(error.value)
+      }
     } finally {
       // Reset registering state after request is complete
       registering.value = false

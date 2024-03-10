@@ -207,9 +207,9 @@ export default {
         router.push('/user')
       } catch (error) {
         // Handle login error
-        console.log(error)
-        errorMessage.value = 'Invalid username or password'
-        toast.error(errorMessage.value)
+        const issue = error.response.data.responseMessage
+        console.log(issue)
+        toast.error(issue)
       } finally {
         isLoading.value = false
       }

@@ -14,6 +14,7 @@
           </h1>
           <div class="avaters">
             <img class="avater" src="/assets/user_profile_view.jpg" />
+
             <img class="avater" src="/assets/user_profile_man.jpg" />
             <img class="avater" src="/assets/user_profile_view.jpg" />
             <i class="fa-solid fa-play text-[#A6F4C5] mx-4 text-[1.8rem] rotate-[30deg]"></i>
