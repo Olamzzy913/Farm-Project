@@ -41,11 +41,24 @@
 
           <div class="shadow-md px-[1rem] md:px-[6rem] py-[1.8rem] rounded" v-else>
             <div class="flex justify-start items-center gap-8">
-              <img
-                src="/assets/farm_flower.png"
-                alt=""
-                class="w-[10rem] h-[10rem] md:w-[14rem] md:h-[14rem] rounded-full mb-10"
-              />
+              <div>
+                <!-- Profile picture, clickable to trigger file input -->
+                <label for="profile-pic-input">
+                  <img
+                    :src="profilePicture || defaultPicture"
+                    alt="Profile Picture"
+                    class="w-[10rem] h-[10rem] md:w-[14rem] md:h-[14rem] cursor-pointer rounded-full mb-10"
+                  />
+                </label>
+
+                <!-- Hidden input for file upload -->
+                <input
+                  id="profile-pic-input"
+                  type="file"
+                  style="display: none"
+                  @change="handleImageUpload"
+                />
+              </div>
 
               <div class="flex flex-col">
                 <h1 class="text-[1.9rem] md:text-[2.5rem] font-medium text-[#1a2219d7]">
@@ -131,7 +144,7 @@
           <h2 class="text-[1.5rem] font-medium">Edit User Profile</h2>
           <i @click="closeForm" class="fa-solid fa-close text-[1.8rem] cursor-pointer"></i>
         </div>
-        <form @submit.prevent="submitForm">
+        <form @submit.prevent="updateUser">
           <div class="flex-col max-w-full w-full items-center justify-center flex mt-8">
             <div class="max-w-full w-full gap-4 grid grid-cols-2 mt-8">
               <div class="">
@@ -179,16 +192,6 @@
 
             <div class="max-w-full w-full gap-4 grid grid-cols-2 mt-8">
               <div class="">
-                <label for="password" class="text-[1rem]">Password</label>
-                <input
-                  type="text"
-                  name="password"
-                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
-                  v-model="item.password"
-                />
-              </div>
-
-              <div class="">
                 <label for="crop_type" class="text-[1rem]">Crop Type</label>
                 <input
                   type="text"
@@ -197,9 +200,7 @@
                   v-model="item.crop_type"
                 />
               </div>
-            </div>
 
-            <div class="max-w-full w-full gap-4 grid grid-cols-2 mt-8">
               <div class="">
                 <label for="state" class="text-[1rem]">State</label>
                 <select
@@ -244,16 +245,6 @@
                   <option value="Yobe">Yobe</option>
                   <option value="Zamfara">Zamfara</option>
                 </select>
-              </div>
-
-              <div class="">
-                <label for="country" class="text-[1rem]">Country</label>
-                <input
-                  type="text"
-                  name="country"
-                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
-                  v-model="item.country"
-                />
               </div>
             </div>
 
@@ -306,7 +297,7 @@
               type="submit"
               class="w-full cursor-pointer mt-8 px-[1.6rem] py-[.8rem] text-center text-white text-[1.5rem] bg-primary rounded-xl"
             >
-              <div class="loader mx-auto" v-if="storing"></div>
+              <div class="spinner mx-auto" v-if="storing"></div>
               <span v-else>Submit</span>
             </button>
           </div>
@@ -330,29 +321,100 @@ export default {
     let item = reactive({})
     const token = localStorage.getItem('token')
     const toast = useToast()
+    const profilePicture = ref(null) // Store the profile picture
+    const defaultPicture = 'assets/upload_profile.jpg' // Path to your default profile picture
+
+    console.log(defaultPicture)
 
     const closeForm = () => {
       edit.value = false
     }
 
-    const userData = ref({
-      firstName: item.first_name,
-      lastName: item.last_name,
-      email: item.email,
-      phone: item.phone,
-      usernin: item.nin,
-      userstate: item.state,
-      street_address: item.street_address,
-      crop_type: item.crop_type,
-      lga: item.lga,
-      usercountry: item.country,
-      usergender: item.gender,
-      userbvn: item.bvn,
-      password: item.password
-    })
+    // Function to handle image upload
+    const handleImageUpload = (event) => {
+      const file = event.target.files[0]
+      if (file) {
+        // Convert the image file to a URL
+        const imageUrl = URL.createObjectURL(file)
+        profilePicture.value = imageUrl
+        console.log(profilePicture.value)
+        updateUserPro()
+        // Here you can add logic to send the image to your backend for storage
+        // and update the user's profile picture
+      }
+    }
+
+    const updateUserPro = async () => {
+      const token = localStorage.getItem('token')
+      const data = { profile_img: profilePicture.value }
+      const url = 'https://api.farmci.com/db/users/farm/profile/update'
+      try {
+        storing.value = true
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${token}`
+          },
+          body: JSON.stringify(data)
+        })
+        console.log(response)
+        if (response.ok) {
+          console.log(data.value)
+          toast.success(`User Profile Image has been updated`)
+          edit.value = false
+          console.log(response)
+        }
+      } catch (error) {
+        console.error('Error updating user data:', error)
+        console.log(error)
+        edit.value = false
+        storing.value = false
+      }
+    }
+
+    const updateUser = async () => {
+      const token = localStorage.getItem('token')
+      const userData = ref({
+        firstName: item.first_name,
+        lastName: item.last_name,
+        email: item.email,
+        phone: item.phone,
+        userstate: item.state,
+        street_address: item.street_address,
+        crop_type: item.crop_type,
+        lga: item.lga,
+        usercountry: item.country,
+        usergender: item.gender
+      })
+      const url = 'https://api.farmci.com/db/users/farm/profile/update'
+      try {
+        storing.value = true
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${token}`
+          },
+          body: JSON.stringify(userData)
+        })
+        console.log(response)
+        if (response.ok) {
+          console.log(userData.value)
+          toast.success(`User data updated`)
+          edit.value = false
+          console.log(response)
+        }
+      } catch (error) {
+        console.error('Error updating user data:', error)
+        console.log(error)
+        edit.value = false
+        storing.value = false
+      }
+    }
 
     const userDataCall = async (token) => {
-      const url = 'https://api.farmci.com/db/users/farm/get/profile'
+      const url = 'https://api.farmci.com/db/users/farm/profile/get'
       try {
         const response = await fetch(url, {
           method: 'POST',
@@ -365,6 +427,8 @@ export default {
 
         if (response.ok) {
           const data = await response.json()
+          console.log(data)
+          profilePicture.value = data.profile_img
           const items = data.responseBody.profile
           for (const key in items) {
             item[key] = items[key]
@@ -415,9 +479,13 @@ export default {
     onMounted(fetchData)
 
     return {
+      handleImageUpload,
+      updateUserPro,
       gotData,
       edit,
-      userData,
+      defaultPicture,
+      profilePicture,
+      updateUser,
       storing,
       closeForm,
       userDataCall,
@@ -443,6 +511,25 @@ export default {
 @keyframes l1 {
   0% {
     background-position: right;
+  }
+}
+
+.spinner {
+  width: 32px;
+  padding: 4px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: white;
+  --_m: conic-gradient(#0000 10%, #000), linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  -webkit-mask-composite: source-out;
+  mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {
+  to {
+    transform: rotate(1turn);
   }
 }
 

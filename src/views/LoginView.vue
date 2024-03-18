@@ -17,30 +17,48 @@
               />
               <ErrorMessage class="text-red-600" name="username" />
             </div>
+
             <div class="mb-8">
               <label for="password" class="text-[1.6rem]">Password</label>
               <vee-field name="password" :bails="false" v-slot="{ field, errors }">
-                <input
-                  class="w-full outline-none border text-[2.2rem] border-b p-4 rounded-[1rem]"
-                  type="password"
-                  v-model="userData.password"
-                  v-bind="field"
-                />
+                <div class="relative">
+                  <input
+                    v-if="showPassword"
+                    type="text"
+                    class="w-full outline-none border text-[2.2rem] border-b p-4 rounded-[1rem]"
+                    v-model="userData.password"
+                    v-bind="field"
+                  />
+                  <input
+                    v-else
+                    type="password"
+                    class="w-full outline-none border text-[2.2rem] border-b p-4 rounded-[1rem]"
+                    v-model="userData.password"
+                    v-bind="field"
+                  />
+                  <span class="button absolute right-8 top-[2.2rem]" @click="toggleShow">
+                    <span class="icon is-small is-right">
+                      <i
+                        class="fas text-[1.5rem]"
+                        :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }"
+                      ></i>
+                    </span>
+                  </span>
+                </div>
                 <div class="text-red-600" v-for="error in errors" :key="error">
                   {{ error }}
                 </div>
-                <router-link
-                  to="/register"
-                  id="fgPassword"
-                  class="float-right mb-10 text-[1.6rem] underline"
+
+                <router-link to="/forget" class="float-right mb-10 text-[1.6rem] underline"
                   >forget password</router-link
                 >
               </vee-field>
             </div>
+
             <div class="flex flex-col w-full justify-center items-center">
               <button
                 type="submit"
-                class="w-full cursor-pointer px-[2.5rem] py-[1.6rem] text-center text-white text-[2rem] bg-primary rounded-2xl"
+                class="w-full px-12 py-6 text-[1.5rem] font-normal bg-primary text-white rounded-lg"
               >
                 <div class="loader mx-auto" v-if="isLoading"></div>
                 <span v-else>Login</span>
@@ -141,7 +159,7 @@
               <input
                 type="button"
                 value="Login"
-                class="w-full cursor-pointer px-[2.5rem] py-[1.6rem] text-white text-[2rem] bg-primary rounded-2xl"
+                class="w-full px-12 py-4 text-[1.5rem] font-normal bg-primary text-white rounded-lg"
               />
               <!-- <a href="" class="block mb-10 text-[1.6rem]">Don't have an account? <span class="text-light">sign up</span></a> -->
             </div>
@@ -180,9 +198,17 @@ export default {
     const data = {
       username: userData.value.username,
       password: userData.value.password
+    }
 
-      // username: userData.value.username, //FCI|lov|8473190256   lovevueui@gmail.com
-      // password: userData.value.password //  vue123456
+    const showPassword = ref(false)
+    const password = ref(null)
+
+    function buttonLabel() {
+      return this.showPassword ? 'Hide' : 'Show'
+    }
+
+    function toggleShow() {
+      this.showPassword = !this.showPassword
     }
 
     function handleLogin(data) {
@@ -217,6 +243,10 @@ export default {
 
     return {
       userData,
+      buttonLabel,
+      password,
+      showPassword,
+      toggleShow,
       data,
       isLoading,
       errorMessage,

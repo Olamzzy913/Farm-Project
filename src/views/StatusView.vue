@@ -100,8 +100,8 @@
                 <li class="flex justify-between">
                   <div class="flex">
                     <img
-                      src="/assets/uifaces-cartoon-image.jpg"
-                      alt=""
+                      :src="profilePicture || defaultPicture"
+                      alt="Profile Picture"
                       class="w-[40px] h-[40px] rounded-full"
                     />
 
@@ -167,6 +167,8 @@ const waiting = ref(true)
 const isLoading = ref(false)
 const gotResult = ref(false)
 const noResult = ref(false)
+const profilePicture = ref(null) // Store the profile picture
+const defaultPicture = 'assets/upload_profile.jpg' // Path to your default profile picture
 
 const fetchResults = async () => {
   try {
@@ -176,6 +178,7 @@ const fetchResults = async () => {
     isLoading.value = true
     currentPage.value = 1
     const response = await axios.get(`https://api.farmci.com/db/search/${searchQuery.value}`)
+    profilePicture.value = response.data.responseBody.results.profile_img
     searchResults.value = response.data.responseBody.results
     gotResult.value = true
     noResult.value = false
