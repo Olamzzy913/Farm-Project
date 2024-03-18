@@ -301,10 +301,8 @@ export default {
     const token = localStorage.getItem('token')
     const toast = useToast()
     const profilePicture = ref(null) // Store the profile picture
-    const defaultPicture = 'assets/upload_profile.jpg' // Path to your default profile picture
+    const defaultPicture = '/assets/upload_profile.jpg' // Path to your default profile picture
     const filePro = ref(null)
-
-    console.log(defaultPicture)
 
     const closeForm = () => {
       edit.value = false
@@ -320,8 +318,12 @@ export default {
         const imageUrl = URL.createObjectURL(file)
         profilePicture.value = imageUrl
         console.log(profilePicture.value)
-        updateUserPro(filePro.value)
+
         // Here you can add logic to send the image to your backend for storage
+        let formData = new FormData()
+        formData.append('profile_img', event.target.files[0])
+        console.log(formData)
+        updateUserPro(formData)
         // and update the user's profile picture
       }
     }
