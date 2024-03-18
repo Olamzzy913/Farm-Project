@@ -144,7 +144,7 @@
           <h2 class="text-[1.5rem] font-medium">Edit User Profile</h2>
           <i @click="closeForm" class="fa-solid fa-close text-[1.8rem] cursor-pointer"></i>
         </div>
-        <form @submit.prevent="updateUser">
+        <form @submit.prevent="submitForm">
           <div class="flex-col max-w-full w-full items-center justify-center flex mt-8">
             <div class="max-w-full w-full gap-4 grid grid-cols-2 mt-8">
               <div class="">
@@ -164,28 +164,6 @@
                   name="last_name"
                   class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
                   v-model="item.last_name"
-                />
-              </div>
-            </div>
-
-            <div class="max-w-full w-full gap-4 grid grid-cols-2 mt-8">
-              <div class="">
-                <label for="email" class="text-[1rem]">Email</label>
-                <input
-                  type="text"
-                  name="email"
-                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
-                  v-model="item.email"
-                />
-              </div>
-
-              <div class="">
-                <label for="phone" class="text-[1rem]">Phone Number</label>
-                <input
-                  type="text"
-                  name="phone"
-                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
-                  v-model="item.phone"
                 />
               </div>
             </div>
@@ -274,6 +252,16 @@
 
             <div class="max-w-full w-full gap-4 grid grid-cols-2 mt-8">
               <div class="">
+                <label for="phone" class="text-[1rem]">Phone Number</label>
+                <input
+                  type="text"
+                  name="phone"
+                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
+                  v-model="item.phone"
+                />
+              </div>
+
+              <div class="">
                 <label for="lga" class="text-[1rem]">Local Government Area</label>
                 <input
                   type="text"
@@ -282,17 +270,8 @@
                   v-model="item.lga"
                 />
               </div>
-
-              <div class="">
-                <label for="bvn" class="text-[1rem]">BVN</label>
-                <input
-                  type="text"
-                  name="bvn"
-                  class="w-full outline-none border text-[1.2rem] border-b p-2 rounded-[.5rem]"
-                  v-model="item.bvn"
-                />
-              </div>
             </div>
+
             <button
               type="submit"
               class="w-full cursor-pointer mt-8 px-[1.6rem] py-[.8rem] text-center text-white text-[1.5rem] bg-primary rounded-xl"
@@ -373,20 +352,25 @@ export default {
       }
     }
 
-    const updateUser = async () => {
-      const token = localStorage.getItem('token')
-      const userData = ref({
-        firstName: item.first_name,
-        lastName: item.last_name,
-        email: item.email,
+    const submitForm = () => {
+      const userData = {
+        first_name: item.first_name,
+        last_name: item.last_name,
         phone: item.phone,
-        userstate: item.state,
+        state: item.state,
         street_address: item.street_address,
         crop_type: item.crop_type,
         lga: item.lga,
-        usercountry: item.country,
-        usergender: item.gender
-      })
+        country: item.country,
+        gender: item.gender
+      }
+      console.log(userData)
+      updateUser(userData)
+    }
+
+    const updateUser = async (userData) => {
+      const token = localStorage.getItem('token')
+      console.log(userData)
       const url = 'https://api.farmci.com/db/users/farm/profile/update'
       try {
         storing.value = true
@@ -400,7 +384,6 @@ export default {
         })
         console.log(response)
         if (response.ok) {
-          console.log(userData.value)
           toast.success(`User data updated`)
           edit.value = false
           console.log(response)
@@ -483,6 +466,7 @@ export default {
       updateUserPro,
       gotData,
       edit,
+      submitForm,
       defaultPicture,
       profilePicture,
       updateUser,
