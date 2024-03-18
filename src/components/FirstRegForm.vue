@@ -379,22 +379,17 @@ export default {
     }
 
     const submitForm = () => {
-      if (defaultPicture.value) {
-        defaultPicture.value = 'assets/must_update.jpg'
+      const acc = {
+        first_name: firstData.value.firstName, //FCI|Ola|6142350  farmci2024
+        last_name: firstData.value.lastName,
+        email: firstData.value.email,
+        phone: firstData.value.phone,
+        password: firstData.value.password
       }
-      if (profilePicture.value) {
-        const acc = {
-          first_name: firstData.value.firstName, //FCI|Ola|6142350  farmci2024
-          last_name: firstData.value.lastName,
-          email: firstData.value.email,
-          phone: firstData.value.phone,
-          password: firstData.value.password
-        }
-        firstData.value = acc
-        console.log(acc)
-        emit('first-form-submit', firstData.value)
-        toggleForm()
-      }
+      firstData.value = acc
+      console.log(acc)
+      emit('first-form-submit', firstData.value)
+      toggleForm()
     }
 
     return {
