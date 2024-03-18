@@ -302,6 +302,7 @@ export default {
     const toast = useToast()
     const profilePicture = ref(null) // Store the profile picture
     const defaultPicture = 'assets/upload_profile.jpg' // Path to your default profile picture
+    const filePro = ref(null)
 
     console.log(defaultPicture)
 
@@ -312,30 +313,32 @@ export default {
     // Function to handle image upload
     const handleImageUpload = (event) => {
       const file = event.target.files[0]
+      filePro.value = { profile_img: file }
+
       if (file) {
         // Convert the image file to a URL
         const imageUrl = URL.createObjectURL(file)
         profilePicture.value = imageUrl
         console.log(profilePicture.value)
-        updateUserPro()
+        updateUserPro(filePro.value)
         // Here you can add logic to send the image to your backend for storage
         // and update the user's profile picture
       }
     }
 
-    const updateUserPro = async () => {
+    const updateUserPro = async (data) => {
+      console.log(data)
       const token = localStorage.getItem('token')
-      const data = { profile_img: profilePicture.value }
       const url = 'https://api.farmci.com/db/users/farm/profile/update'
       try {
         storing.value = true
         const response = await fetch(url, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
             Authorization: `Token ${token}`
           },
-          body: JSON.stringify(data)
+          data
         })
         console.log(response)
         if (response.ok) {

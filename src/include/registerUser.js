@@ -17,6 +17,7 @@ export default function useRegisterUser() {
       // Set registering state to true to show loading spinner or similar UI
       registering.value = true
       // Make POST request to register user
+
       const response = await axios.post('https://api.farmci.com/db/accounts/register', data)
       // If request is successful, update success state to true
       success.value = true

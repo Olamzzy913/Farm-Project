@@ -368,23 +368,15 @@ export default {
     // Function to handle image upload
     const handleImageUpload = (event) => {
       const file = event.target.files[0]
-      // const file1 = profilePicture.value.files[0]
+      filePro.value = file
       if (file) {
-
         // Convert the image file to a URL
         const imageUrl = URL.createObjectURL(file)
         profilePicture.value = imageUrl
-        filePro.value = file
+
         console.log(file)
-        // const formData = new FormData()
-        // formData.append('profilePicture', file)
-        // filePro.value = formData
-        // console.log(filePro, imageUrl)
-        // Here you can add logic to send the image to your backend for storage
-        // and update the user's profile picture
       }
     }
-
 
     const submitForm = () => {
       if (defaultPicture.value) {
@@ -392,12 +384,11 @@ export default {
       }
       if (profilePicture.value) {
         const acc = {
-          first_name: firstData.value.firstName,
+          first_name: firstData.value.firstName, //FCI|Ola|6142350  farmci2024
           last_name: firstData.value.lastName,
           email: firstData.value.email,
           phone: firstData.value.phone,
-          password: firstData.value.password,
-          profile_img: filePro
+          password: firstData.value.password
         }
         firstData.value = acc
         console.log(acc)
