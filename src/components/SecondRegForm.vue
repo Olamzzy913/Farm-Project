@@ -139,6 +139,12 @@
           <div class="loader mx-auto" v-if="registering"></div>
           <span v-else>Submit</span>
         </button>
+        <button
+          @click="toggleForm()"
+          class="w-full px-12 mt-4 py-4 text-[1.5rem] hover:bg-primary hover:text-white text-primary font-normal border border-primary rounded-lg"
+        >
+          Back
+        </button>
         <router-link to="/login" class="block mb-10 text-[1.6rem]"
           >Don't have an account? <span class="text-light">sign in</span></router-link
         >
@@ -150,6 +156,7 @@
 <script>
 import { ref } from 'vue'
 import useRegisterUser from '@/include/registerUser'
+import { activeForm } from '@/stores/form.js'
 
 export default {
   name: 'SecondRegForm',
@@ -183,6 +190,10 @@ export default {
       usergender: ''
     })
 
+    function toggleForm() {
+      activeForm.value = !activeForm.value
+    }
+
     const submitForm = () => {
       console.log('First Data:', props.firstData)
       console.log('Second Data:', userDataApp.value)
@@ -202,6 +213,7 @@ export default {
     }
 
     return {
+      toggleForm,
       registerUser,
       registering,
       error,

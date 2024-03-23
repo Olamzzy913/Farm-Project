@@ -13,10 +13,10 @@
             simplest way.
           </h1>
           <div class="avaters">
-            <img class="avater" src="/assets/user_profile_view.jpg" />
+            <img class="avater" src="/assets/farm_users.jfif" />
 
-            <img class="avater" src="/assets/user_profile_man.jpg" />
-            <img class="avater" src="/assets/user_profile_view.jpg" />
+            <img class="avater" src="/assets/farmer_user.jfif" />
+            <img class="avater" src="/assets/our_farmer.jfif" />
             <i class="fa-solid fa-play text-[#A6F4C5] mx-4 text-[1.8rem] rotate-[30deg]"></i>
             <h2 class="text-[2.6rem] md:text-[3.7rem] font-bold text-white">
               1000+<span class="font-normal hidden lg:inline-block">Registered</span>
@@ -62,7 +62,6 @@ mainContent
 // If home show embeded header nav
 const route = useRoute()
 const isHomePage = computed(() => route.path === '/')
-console.log(route.path === '/')
 
 isHomePage
 </script>

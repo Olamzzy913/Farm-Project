@@ -1,6 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import NProgress from 'nprogress'
-import HomeView from '../views/HomeView.vue'
+const Home = () => import('@/views/HomeView.vue')
+const Register = () => import('../views/RegisterView.vue')
+const Login = () => import('../views/LoginView.vue')
+const Forget = () => import('../views/ForgetPassword.vue')
+const Verify = () => import('../views/VerifyUser.vue')
+const User = () => import('../views/UserView.vue')
+const Status = () => import('../views/StatusView.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,37 +14,37 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: Home
     },
     {
       path: '/register',
       name: 'register',
-      component: () => import('../views/RegisterView.vue')
+      component: Register
     },
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/LoginView.vue')
+      component: Login
     },
     {
       path: '/forget',
       name: 'forget',
-      component: () => import('../views/ForgetPassword.vue')
+      component: Forget
     },
     {
       path: '/verify',
       name: 'verify',
-      component: () => import('../views/VerifyUser.vue')
+      component: Verify
     },
     {
       path: '/user',
       name: 'user',
-      component: () => import('../views/UserView.vue')
+      component: User
     },
     {
       path: '/status',
       name: 'status',
-      component: () => import('../views/StatusView.vue')
+      component: Status
     },
     {
       path: '/:catchAll(.*)*',

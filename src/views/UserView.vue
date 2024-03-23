@@ -301,7 +301,7 @@ export default {
     const token = localStorage.getItem('token')
     const toast = useToast()
     const profilePicture = ref(null) // Store the profile picture
-    const defaultPicture = '/assets/upload_profile.jpg' // Path to your default profile picture
+    const defaultPicture = './assets/upload_profile.jpg' // Path to your default profile picture
     const filePro = ref(null)
 
     const closeForm = () => {
@@ -320,16 +320,14 @@ export default {
         console.log(profilePicture.value)
 
         // Here you can add logic to send the image to your backend for storage
-        let formData = new FormData()
-        formData.append('profile_img', event.target.files[0])
-        console.log(formData)
-        updateUserPro(formData)
+
         // and update the user's profile picture
       }
     }
 
-    const updateUserPro = async (data) => {
-      console.log(data)
+    const updateUserPro = async () => {
+      let formData = new FormData()
+      formData.append('profile_img', event.target.files[0])
       const token = localStorage.getItem('token')
       const url = 'https://api.farmci.com/db/users/farm/profile/update'
       try {
@@ -340,11 +338,10 @@ export default {
             'Content-Type': 'multipart/form-data',
             Authorization: `Token ${token}`
           },
-          data
+          formData
         })
         console.log(response)
         if (response.ok) {
-          console.log(data.value)
           toast.success(`User Profile Image has been updated`)
           edit.value = false
           console.log(response)

@@ -135,7 +135,7 @@ export default {
     const filePro = ref(null)
     const errorMessage = ref('')
     const isLoading = ref(false)
-    let defaultPicture = ref('/assets/upload_profile.jpg')
+    let defaultPicture = ref('./assets/upload_profile.jpg')
     const showPassword = ref(false)
     const password = ref(null)
 

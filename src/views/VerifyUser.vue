@@ -116,7 +116,7 @@ export default {
     function handleVerify() {
       const data = inputs.value.map((input) => input.value).join('')
       console.log('Values of all inputs:', data)
-      verifyUser(data)
+      verifyUser(+data)
     }
 
     const moveToNext = (event, nextInputRef) => {
@@ -135,16 +135,20 @@ export default {
       console.log(data)
       try {
         isLoading.value = true
-        const response = await axios.post('https://api.farmci.com/accounts/reset/password', data)
+        const response = await axios.post(
+          'https://api.farmci.com/accounts/reset/password/verify',
+          data
+        )
         // Assuming the API returns a token upon successful login
         if (response.data.success) {
           console.log(response, data)
+          toast.success(`Password Changed Successfully`)
           // Redirect to dashboard or any other page upon successful login
           router.push('/login')
         }
       } catch (error) {
         // Handle login error
-        const issue = 'Valid Email and New Password is required'
+        const issue = 'OTP has expired, Please try again!'
         console.log(error)
         toast.error(issue)
         if (issue) {
