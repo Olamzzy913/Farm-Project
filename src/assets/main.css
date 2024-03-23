@@ -10,23 +10,23 @@ html {
   }
 
   .nav_items {
-    @apply flex items-center px-[3rem] justify-between h-[9rem] w-full lg:px-[6rem] z-[100];
+    @apply flex items-center px-[3rem] justify-between h-[6rem] w-full lg:px-[6rem] z-[100];
   }
 
   .nav_link {
-    @apply block text-[1.6rem] font-normal hover:py-[.8rem] hover:px-[2.5rem] hover:rounded-xl text-[#222] hover:bg-primary hover:text-white transition-all;
+    @apply block text-[1.1rem] font-normal hover:py-[.8rem] hover:px-[2.5rem] hover:rounded-xl text-[#222] hover:bg-primary hover:text-white transition-all;
   }
 
   .nav_linkW {
-    @apply block text-[1.6rem] font-normal hover:py-[.8rem] hover:px-[2.5rem] text-[#222] hover:rounded-xl hover:bg-primary hover:text-white transition-all;
+    @apply block text-[1.1rem] font-normal hover:py-[.8rem] hover:px-[2.5rem] text-[#222] hover:rounded-xl hover:bg-primary hover:text-white transition-all;
   }
 
   .nav_link--btn {
-    @apply block text-[1.6rem] font-normal bg-primary py-[.8rem] px-[2.5rem] rounded-xl text-white hover:bg-secondary duration-200;
+    @apply block text-[1.1rem] font-normal bg-primary py-[.8rem] px-[2.5rem] rounded-xl text-white hover:bg-secondary duration-200;
   }
 
   .outline--btn {
-    @apply text-[1.6rem] font-normal border border-outlinePri py-[.8rem] px-[3rem] rounded-xl text-outlinePri hover:text-white hover:bg-outlinePri duration-200;
+    @apply text-[1.1rem] font-normal border border-outlinePri py-[.8rem] px-[3rem] rounded-xl text-outlinePri hover:text-white hover:bg-outlinePri duration-200;
   }
 
   .header_section {

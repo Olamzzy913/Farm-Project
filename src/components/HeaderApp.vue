@@ -1,8 +1,10 @@
 <template>
   <div :class="{ sticky: isScrolled }" class="bg-white w-full" v-if="nav">
     <div class="flex justify-between items-center px-8">
-      <router-link to="/"><img src="/assets/header_logo.png" alt="Farm CI logo" /></router-link>
-      <i @click="toggleNav" class="fas fa-x text-[2rem] cursor-pointer"></i>
+      <router-link to="/"
+        ><img src="/assets/header_logo.png" alt="Farm CI logo" class="w-[9rem]"
+      /></router-link>
+      <i @click="toggleNav" class="fas fa-x text-[1.4rem] cursor-pointer"></i>
     </div>
     <ul class="items-center just flex flex-col">
       <li class="">
@@ -44,7 +46,7 @@
   <div :class="{ sticky: isScrolled }" v-if="!nav">
     <nav class="nav_items nav">
       <router-link to="/"
-        ><img src="/assets/header_logo.png" alt="Farm CI logo" class="w-[14rem] md:w-[16rem]"
+        ><img src="/assets/header_logo.png" alt="Farm CI logo" class="w-[9rem]"
       /></router-link>
       <ul class="hidden items-center lg:flex">
         <li class="mr-16">
@@ -87,7 +89,7 @@
       </ul>
 
       <div id="menu" class="block lg:hidden">
-        <i id="navMenu" class="fas fa-bars text-[3rem] cursor-pointer" @click="toggleNav"></i>
+        <i id="navMenu" class="fas fa-bars text-[2rem] cursor-pointer" @click="toggleNav"></i>
       </div>
     </nav>
   </div>
