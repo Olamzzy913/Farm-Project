@@ -156,7 +156,7 @@
 <script>
 import { ref } from 'vue'
 import useRegisterUser from '@/include/registerUser'
-import { activeForm } from '@/stores/form.js'
+// import { activeForm } from '@/stores/form.js'
 
 export default {
   name: 'SecondRegForm',
@@ -190,9 +190,9 @@ export default {
       usergender: ''
     })
 
-    function toggleForm() {
-      activeForm.value = !activeForm.value
-    }
+    // function toggleForm() {
+    //   activeForm.value = !activeForm.value
+    // }
 
     const submitForm = () => {
       console.log('First Data:', props.firstData)
@@ -213,7 +213,7 @@ export default {
     }
 
     return {
-      toggleForm,
+      // toggleForm,
       registerUser,
       registering,
       error,

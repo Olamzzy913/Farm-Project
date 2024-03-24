@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import NProgress from 'nprogress'
 const Home = () => import('@/views/HomeView.vue')
-const Register = () => import('../views/RegisterView.vue')
-const Login = () => import('../views/LoginView.vue')
-const Forget = () => import('../views/ForgetPassword.vue')
-const Verify = () => import('../views/VerifyUser.vue')
-const User = () => import('../views/UserView.vue')
-const Status = () => import('../views/StatusView.vue')
+const Register = () => import('@/views/RegisterView.vue')
+const Login = () => import('@/views/LoginView.vue')
+const Forget = () => import('@/views/ForgetPassword.vue')
+const Verify = () => import('@/views/VerifyUser.vue')
+const User = () => import('@/views/UserView.vue')
+const Status = () => import('@/views/StatusView.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
