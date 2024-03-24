@@ -5,7 +5,7 @@
         <div>
           <label for="profile-pic-input">
             <img
-              :src="profilePicture || defaultPicture"
+              :src="profilePicture || './assets/upload_profile.jpg'"
               alt="Profile Picture"
               class="w-[12rem] h-[12rem] md:w-[16rem] md:h-[16rem] mx-auto cursor-pointer rounded-full mb-10"
             />
@@ -135,7 +135,7 @@ export default {
     const filePro = ref(null)
     const errorMessage = ref('')
     const isLoading = ref(false)
-    let defaultPicture = ref('@/assets/upload_profile.jpg')
+    let defaultPicture = ref('./assets/upload_profile.jpg')
     const showPassword = ref(false)
     const password = ref(null)
 
