@@ -14,15 +14,15 @@ html {
   }
 
   .nav_link {
-    @apply block text-[1.1rem] font-normal hover:py-[.8rem] hover:px-[2.5rem] hover:rounded-xl text-[#222] hover:bg-primary hover:text-white transition-all;
+    @apply block text-[1.3rem] font-normal hover:py-[.8rem] hover:px-[2.5rem] hover:rounded-xl text-[#222] hover:bg-primary hover:text-white transition-all;
   }
 
   .nav_linkW {
-    @apply block text-[1.1rem] font-normal hover:py-[.8rem] hover:px-[2.5rem] text-[#222] hover:rounded-xl hover:bg-primary hover:text-white transition-all;
+    @apply block text-[1.3rem] font-normal hover:py-[.8rem] hover:px-[2.5rem] text-[#222] hover:rounded-xl hover:bg-primary hover:text-white transition-all;
   }
 
   .nav_link--btn {
-    @apply block text-[1.1rem] font-normal bg-primary py-[.8rem] px-[2.5rem] rounded-xl text-white hover:bg-secondary duration-200;
+    @apply block text-[1.3rem] font-normal bg-primary py-[.8rem] px-[2.5rem] rounded-xl text-white hover:bg-secondary duration-200;
   }
 
   .outline--btn {
@@ -42,18 +42,18 @@ html {
   }
 
   .avaters {
-    @apply my-8 flex ml-4 items-baseline;
+    @apply flex ml-4 items-baseline;
   }
 
   .avater {
-    @apply w-[4.84rem] h-[5rem] rounded-full -ml-4;
+    @apply w-[4rem] h-[4rem] rounded-full -ml-4;
   }
 }
 
 .title::after {
   content: '';
-  width: 12%;
-  height: 4px;
+  width: 10%;
+  height: 2.5px;
   background: #f7c35f;
   display: block;
 }

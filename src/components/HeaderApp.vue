@@ -2,7 +2,7 @@
   <div :class="{ sticky: isScrolled }" class="bg-white w-full" v-if="nav">
     <div class="flex justify-between items-center px-8">
       <router-link to="/"
-        ><img src="/assets/header_logo.png" alt="Farm CI logo" class="w-[9rem]"
+        ><img src="/assets/header_logo.png" alt="Farm CI logo" class="w-[12rem]"
       /></router-link>
       <i @click="toggleNav" class="fas fa-x text-[1.4rem] cursor-pointer"></i>
     </div>
@@ -46,7 +46,7 @@
   <div :class="{ sticky: isScrolled }" v-if="!nav">
     <nav class="nav_items nav">
       <router-link to="/"
-        ><img src="/assets/header_logo.png" alt="Farm CI logo" class="w-[9rem]"
+        ><img src="/assets/header_logo.png" alt="Farm CI logo" class="w-[11rem]"
       /></router-link>
       <ul class="hidden items-center lg:flex">
         <li class="mr-16">

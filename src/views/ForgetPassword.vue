@@ -3,41 +3,41 @@
     <section class="section py-[4rem] md:py-[12rem]">
       <!-- create new password -->
       <div class="flex-col max-w-full w-full items-center justify-center flex">
-        <h1 class="text-[2rem] md:text-6xl font-normal text-center">Reset Password</h1>
-        <div class="w-[32rem] md:w-[45rem] mt-8">
+        <h1 class="text-[1.7rem] md:text-[3rem] font-medium text-center">Reset Password</h1>
+        <div class="w-[24rem] md:w-[32rem] mt-8">
           <vee-form :validation-schema="schema" @submit="handlePassword">
             <div class="mb-8">
-              <label for="email" class="text-[1.6rem]">Email</label>
+              <label for="email" class="text-[1.3rem]">Email</label>
               <vee-field
                 type="email"
                 name="email"
                 v-model="userData.email"
-                class="w-full outline-none font-normal border text-[2rem] border-b p-4 rounded-[1rem]"
+                class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
               />
               <ErrorMessage class="text-red-600" name="email" />
             </div>
             <div class="mb-8">
-              <label for="password" class="text-[1.6rem]">New Password</label>
+              <label for="password" class="text-[1.3rem]">New Password</label>
               <vee-field name="password" :bails="false" v-slot="{ field, errors }">
                 <div class="relative">
                   <input
                     v-if="showPassword"
                     type="text"
-                    class="w-full outline-none border text-[2.2rem] border-b p-4 rounded-[1rem]"
+                    class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
                     v-model="userData.password"
                     v-bind="field"
                   />
                   <input
                     v-else
                     type="password"
-                    class="w-full outline-none border text-[2.2rem] border-b p-4 rounded-[1rem]"
+                    class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
                     v-model="userData.password"
                     v-bind="field"
                   />
-                  <span class="button absolute right-8 top-[2.2rem]" @click="toggleShow">
+                  <span class="button absolute right-[1.8rem] top-[1.3rem]" @click="toggleShow">
                     <span class="icon is-small is-right">
                       <i
-                        class="fas text-[1.5rem]"
+                        class="fas text-[1.2rem]"
                         :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }"
                       ></i>
                     </span>
@@ -49,27 +49,27 @@
               </vee-field>
             </div>
             <div class="mb-8">
-              <label for="password" class="text-[1.6rem]">Confirm Password</label>
+              <label for="password" class="text-[1.3rem]">Confirm Password</label>
               <vee-field name="password" :bails="false" v-slot="{ field, errors }">
                 <div class="relative">
                   <input
                     v-if="showPassword"
                     type="text"
-                    class="w-full outline-none border text-[2.2rem] border-b p-4 rounded-[1rem]"
+                    class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
                     v-model="userData.password"
                     v-bind="field"
                   />
                   <input
                     v-else
                     type="password"
-                    class="w-full outline-none border text-[2.2rem] border-b p-4 rounded-[1rem]"
+                    class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
                     v-model="userData.password"
                     v-bind="field"
                   />
-                  <span class="button absolute right-8 top-[2.2rem]" @click="toggleShow">
+                  <span class="button absolute right-[1.8rem] top-[1.3rem]" @click="toggleShow">
                     <span class="icon is-small is-right">
                       <i
-                        class="fas text-[1.5rem]"
+                        class="fas text-[1.2rem]"
                         :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }"
                       ></i>
                     </span>
@@ -83,13 +83,13 @@
             <div class="flex flex-col w-full justify-center items-center">
               <button
                 type="submit"
-                class="w-full cursor-pointer px-[2.5rem] py-[1.6rem] text-center text-white text-[2rem] bg-primary rounded-2xl"
+                class="w-full px-6 py-3 text-[1.4rem] font-light bg-primary text-white rounded-lg"
               >
                 <div class="loader mx-auto" v-if="isLoading"></div>
                 <span v-else>Confirm</span>
               </button>
-              <router-link to="/register" class="block mb-10 text-[1.6rem]"
-                >Don't have an account? <span class="text-light">sign up</span></router-link
+              <router-link to="/register" class="block mb-10 text-[1.2rem]"
+                >Don't have an account? <span class="text-light">Sign up</span></router-link
               >
             </div>
           </vee-form>
@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'
@@ -118,6 +118,10 @@ export default {
   setup() {
     const showPassword = ref(false)
     const password = ref(null)
+
+    onMounted(() => {
+      document.title = 'FarmCI | Reset Password'
+    })
 
     function buttonLabel() {
       return this.showPassword ? 'Hide' : 'Show'

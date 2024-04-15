@@ -3,17 +3,17 @@
     <section class="section py-[4rem] md:py-[12rem]">
       <!-- create new password -->
       <div class="flex-col max-w-full w-full items-center justify-center flex">
-        <h1 class="text-[2rem] md:text-6xl font-normal text-center">Verify OTP</h1>
+        <h1 class="text-[1.7rem] md:text-[3rem] font-medium text-center">Verify OTP</h1>
         <p class="mt-4 text-[1.2rem]">Enter the code sent to your mail below.</p>
-        <div class="w-[32rem] smi:w-[45rem] mt-8">
+        <div class="w-[24rem] md:w-[32rem] mt-8">
           <form @submit.prevent="handleVerify">
-            <div class="grid grid-cols-6 gap-2 smi:gap-6 mb-8">
+            <div class="grid grid-cols-6 gap-2 smi:gap-4 mb-8">
               <input
                 v-for="(input, index) in inputs"
                 maxlength="1"
                 :key="index"
                 v-model="input.value"
-                class="w-full outline-none border text-[2.2rem] border-b p-4 pl-8 rounded-[1rem]"
+                class="w-full outline-none font-light border text-[1.5rem] border-b p-3 pl-[1.2rem] md:pl-[1.8rem] rounded-[1rem]"
                 @input="handleInput(index)"
               />
             </div>
@@ -29,13 +29,13 @@
             <div class="flex flex-col w-full justify-center items-center">
               <button
                 type="submit"
-                class="w-full cursor-pointer px-[2.5rem] py-[1.6rem] text-center text-white text-[2rem] bg-primary rounded-2xl"
+                class="w-full px-6 py-3 text-[1.4rem] font-light bg-primary text-white rounded-lg"
               >
                 <div class="loader mx-auto" v-if="isLoading"></div>
                 <span v-else>Confirm</span>
               </button>
-              <router-link to="/register" class="block mb-10 text-[1.6rem]"
-                >Don't have an account? <span class="text-light">sign up</span></router-link
+              <router-link to="/register" class="block mb-10 text-[1.2rem]"
+                >Don't have an account? <span class="text-light">Sign up</span></router-link
               >
             </div>
           </form>
@@ -77,6 +77,10 @@ export default {
         nextInput.focus()
       }
     }
+
+    onMounted(() => {
+      document.title = 'FarmCI | Verification'
+    })
 
     const errorMessage = ref('')
     const router = useRouter()

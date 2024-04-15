@@ -5,9 +5,7 @@
       <HeaderApp />
       <div class="header_section ml-6" v-show="mainContent">
         <div class="grid grid-flow-row gap-6">
-          <h1
-            class="text-[4.5rem] md:text-[5.5rem] lg:text-[7.5rem] leading-[1.15] font-bold text-white"
-          >
+          <h1 class="text-[4.5rem] md:text-[5.5rem] leading-[1.15] font-bold text-white">
             <span class="text-[#F7C35F]">Easy Farming</span><br />
             with the <br />
             simplest way.
@@ -18,7 +16,7 @@
             <img class="avater" src="/assets/farmer_user.jfif" />
             <img class="avater" src="/assets/our_farmer.jfif" />
             <i class="fa-solid fa-play text-[#A6F4C5] mx-4 text-[1.8rem] rotate-[30deg]"></i>
-            <h2 class="text-[2.6rem] md:text-[3.7rem] font-bold text-white">
+            <h2 class="text-[2rem] md:text-[2.4rem] font-bold text-white">
               1000+<span class="font-normal hidden lg:inline-block">Registered</span>
             </h2>
           </div>

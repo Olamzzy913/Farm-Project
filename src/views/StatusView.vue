@@ -4,15 +4,15 @@
     <section class="section py-[4rem] md:py-[12rem]">
       <div class="section">
         <!-- search field -->
-        <div class="flex flex-col max-w-full w-full">
-          <h1 class="text-[2.4rem] md:text-[3.4rem]">FarmCI Status</h1>
-          <div class="flex items-center border rounded-[1rem] p-4">
-            <i class="bx bx-search text-[3rem] pr-4 text-[#3d3d3d]"></i>
+        <div class="flex flex-col max-w-full w-full md:w-[76rem] lg:w-[80rem] mx-auto">
+          <h1 class="text-[2rem] md:text-[3rem] font-medium">FarmCI Status</h1>
+          <div class="flex items-center border rounded-[1rem] p-2">
+            <i class="bx bx-search text-[2rem] pr-4 text-[#3d3d3d]"></i>
             <input
               type="search"
               name="search"
               placeholder="Search for Farmers’ crop name, state or phone number"
-              class="w-full outline-none text-[1.9rem]"
+              class="w-full outline-none text-[1.3rem] font-light"
               v-model="searchQuery"
               @input="search"
             />
@@ -23,9 +23,9 @@
         <div v-if="waiting" class="px-[1rem] md:px-[3rem] py-[1.8rem] text-center">
           <img
             src="/assets/waiting_for_search.svg"
-            class="w-[18rem] h-[18rem] md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] mx-auto"
+            class="w-[18rem] h-[18rem] md:w-[22rem] md:h-[22rem] mx-auto"
           />
-          <p class="inline-block text-[1.5rem] md:text-[2rem] text-[#141b14] font-light">
+          <p class="inline-block text-[1.3rem] md:text-[1.7rem] text-[#141b14] font-light">
             Waiting for your search input.....
           </p>
         </div>
@@ -156,8 +156,12 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import axios from 'axios'
+
+ onMounted(() => {
+      document.title = `FarmCI | Farmer's status`
+    })
 
 const searchQuery = ref('')
 const searchResults = ref([])

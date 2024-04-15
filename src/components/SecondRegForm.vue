@@ -1,25 +1,25 @@
 <template>
-  <div class="w-[32rem] md:w-[45rem] mt-8">
+  <div class="w-[24rem] md:w-[32rem] mt-8">
     <vee-form :validation-schema="schema" @submit="submitForm">
       <div class="mb-8">
         <vee-field
           as="select"
           name="country"
           placeholder="Country"
-          class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+          class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
           v-model="userDataApp.usercountry"
         >
           <option value="Nigeria">Nigeria</option>
           <option value="">Country</option>
         </vee-field>
-        <ErrorMessage class="text-red-600" name="country" />
+        <ErrorMessage class="text-red-600 text-[0.85rem]" name="country" />
       </div>
 
       <div class="mb-8">
         <vee-field
           as="select"
           name="state"
-          class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+          class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
           v-model="userDataApp.userstate"
         >
           <option value="Abia ">Abia</option>
@@ -60,18 +60,18 @@
           <option value="Zamfara">Zamfara</option>
           <option value="">State</option>
         </vee-field>
-        <ErrorMessage class="text-red-600" name="state" />
+        <ErrorMessage class="text-red-600 text-[0.85rem]" name="state" />
       </div>
 
       <div class="mb-8">
         <vee-field
           name="lga"
           placeholder="Local Government Area"
-          class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+          class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
           v-model="userDataApp.userlga"
         >
         </vee-field>
-        <ErrorMessage class="text-red-600" name="lga" />
+        <ErrorMessage class="text-red-600 text-[0.85rem]" name="lga" />
       </div>
 
       <div class="mb-8">
@@ -79,20 +79,20 @@
           type="text"
           name="street_address"
           placeholder="Address"
-          class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+          class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
           v-model="userDataApp.street_address"
         />
-        <ErrorMessage class="text-red-600" name="street_address" />
+        <ErrorMessage class="text-red-600 text-[0.85rem]" name="street_address" />
       </div>
       <div class="mb-8">
         <vee-field
           type="text"
           name="nin"
           placeholder="National Identification Number"
-          class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+          class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
           v-model="userDataApp.usernin"
         />
-        <ErrorMessage class="text-red-600" name="nin" />
+        <ErrorMessage class="text-red-600 text-[0.85rem]" name="nin" />
       </div>
 
       <div class="mb-8">
@@ -100,24 +100,24 @@
           type="text"
           name="bvn"
           placeholder="BVN"
-          class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+          class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
           v-model="userDataApp.userbvn"
         />
-        <ErrorMessage class="text-red-600" name="bvn" />
+        <ErrorMessage class="text-red-600 text-[0.85rem]" name="bvn" />
       </div>
 
       <div class="mb-8">
         <vee-field
           as="select"
           name="gender"
-          class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+          class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
           v-model="userDataApp.usergender"
         >
           <option value="male">Male</option>
           <option value="female">Female</option>
           <option value="">Gender</option>
         </vee-field>
-        <ErrorMessage class="text-red-600" name="gender" />
+        <ErrorMessage class="text-red-600 text-[0.85rem]" name="gender" />
       </div>
 
       <div class="mb-8">
@@ -125,27 +125,27 @@
           type="text"
           name="crop_type"
           placeholder="Crop Type"
-          class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+          class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
           v-model="userDataApp.crop_type"
         />
-        <ErrorMessage class="text-red-600" name="crop_type" />
+        <ErrorMessage class="text-red-600 text-[0.85rem]" name="crop_type" />
       </div>
 
       <div class="flex flex-col w-full justify-center items-center">
         <button
           type="submit"
-          class="w-full px-12 py-4 text-[1.5rem] font-normal bg-primary text-white rounded-lg"
+          class="w-full px-6 py-3 text-[1.4rem] font-light bg-primary text-white rounded-lg"
         >
           <div class="loader mx-auto" v-if="registering"></div>
           <span v-else>Submit</span>
         </button>
         <button
           @click="toggleForm()"
-          class="w-full px-12 mt-4 py-4 text-[1.5rem] hover:bg-primary hover:text-white text-primary font-normal border border-primary rounded-lg"
+          class="w-full px-6 py-3 mt-4 text-[1.4rem] hover:bg-primary hover:text-white text-primary font-normal border border-primary rounded-lg"
         >
           Back
         </button>
-        <router-link to="/login" class="block mb-10 text-[1.6rem]"
+        <router-link to="/login" class="block mb-10 text-[1.2rem]"
           >Don't have an account? <span class="text-light">sign in</span></router-link
         >
       </div>

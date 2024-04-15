@@ -1,13 +1,13 @@
 <template>
-  <div class="w-[32rem] md:w-[45rem] mt-8">
+  <div class="w-[24rem] md:w-[32rem] mt-8">
     <vee-form :validation-schema="schema" @submit="submitForm">
       <div class="mb-8 relative">
         <div>
           <label for="profile-pic-input">
             <img
-              :src="profilePicture || './assets/upload_profile.jpg'"
+              :src="profilePicture || 'assets/upload_profile.jpg'"
               alt="Profile Picture"
-              class="w-[12rem] h-[12rem] md:w-[16rem] md:h-[16rem] mx-auto cursor-pointer rounded-full mb-10"
+              class="w-[9rem] h-[9rem] md:w-[12rem] md:h-[12rem] mx-auto cursor-pointer rounded-full mb-10"
             />
           </label>
 
@@ -25,10 +25,10 @@
           type="text"
           name="firstName"
           placeholder="First Name"
-          class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+          class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
           v-model="firstData.firstName"
         />
-        <ErrorMessage class="text-red-600" name="firstName" />
+        <ErrorMessage class="text-red-600 text-[0.85rem]" name="firstName" />
       </div>
 
       <div class="mb-8">
@@ -36,10 +36,10 @@
           type="text"
           name="lastName"
           placeholder="Last Name"
-          class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+          class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
           v-model="firstData.lastName"
         />
-        <ErrorMessage class="text-red-600" name="lastName" />
+        <ErrorMessage class="text-red-600 text-[0.85rem]" name="lastName" />
       </div>
 
       <div class="mb-8">
@@ -47,10 +47,10 @@
           type="email"
           name="email"
           placeholder="Email"
-          class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+          class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
           v-model="firstData.email"
         />
-        <ErrorMessage class="text-red-600" name="email" />
+        <ErrorMessage class="text-red-600 text-[0.85rem]" name="email" />
       </div>
 
       <div class="mb-8">
@@ -58,10 +58,10 @@
           type="text"
           name="phone"
           placeholder="Phone"
-          class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+          class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
           v-model="firstData.phone"
         />
-        <ErrorMessage class="text-red-600" name="phone" />
+        <ErrorMessage class="text-red-600 text-[0.85rem]" name="phone" />
       </div>
 
       <div class="mb-8">
@@ -71,7 +71,7 @@
               v-if="showPassword"
               type="text"
               placeholder="Password"
-              class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+              class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
               v-model="firstData.password"
               v-bind="field"
             />
@@ -79,20 +79,20 @@
               v-else
               type="password"
               placeholder="Password"
-              class="w-full outline-none border text-[1.8rem] font-light border-b p-4 rounded-[1rem]"
+              class="w-full outline-none font-light border text-[1.5rem] border-b p-3 rounded-[1rem]"
               v-model="firstData.password"
               v-bind="field"
             />
-            <span class="button absolute right-8 top-[2.2rem]" @click="toggleShow">
+            <span class="button absolute right-[1.8rem] top-[1.3rem]" @click="toggleShow">
               <span class="icon is-small is-right">
                 <i
-                  class="fas text-[1.5rem]"
+                  class="fas text-[1.2rem]"
                   :class="{ 'fa-eye-slash': showPassword, 'fa-eye': !showPassword }"
                 ></i>
               </span>
             </span>
           </div>
-          <div class="text-red-600" v-for="error in errors" :key="error">
+          <div class="text-red-600 text-[0.85rem]" v-for="error in errors" :key="error">
             {{ error }}
           </div>
         </vee-field>
@@ -101,12 +101,12 @@
       <div class="flex flex-col w-full justify-center items-center">
         <button
           type="submit"
-          class="w-full px-12 py-6 text-[1.5rem] font-normal bg-primary text-white rounded-lg"
+          class="w-full px-6 py-3 text-[1.4rem] font-light bg-primary text-white rounded-lg"
         >
           Proceed
         </button>
-        <router-link to="/login" class="block mb-10 text-[1.6rem]"
-          >Don't have an account? <span class="text-light">sign in</span></router-link
+        <router-link to="/login" class="block mb-10 text-[1.2rem]"
+          >Don't have an account? <span class="text-light">Sign in</span></router-link
         >
       </div>
     </vee-form>

@@ -1,15 +1,13 @@
 <template>
   <main class="main">
     <section
-      class="section--1 hidden lg:block py-[40px] md:py-[120px] bg-gradient-to-tr from-[#5D6037] via-secondary to-secondary"
+      class="section--1 hidden smi:block py-[40px] md:py-[120px] bg-gradient-to-tr from-[#5D6037] via-secondary to-secondary"
       id="section"
     >
       <div class="section">
-        <div class="section_container">
+        <div class="section_container gap-[1.8rem] md:gap-[8rem]">
           <div class="section_content">
-            <h2
-              class="mb-10 text-white text-[4rem] font-light leading-[5rem] font-['Aeonik TRIAL']"
-            >
+            <h2 class="mb-10 text-white text-[1.7rem] font-light leading-[2.3rem]">
               We are Farm Central Intelligence. We help in increasing farmers productivity by
               providing valueable and helpful input resources
             </h2>
@@ -19,16 +17,20 @@
             >
             <router-link to="/login" class="outline--btn ml-4">Login</router-link>
           </div>
-          <div class="section_image"><img src="/assets/about_section.png" alt="" /></div>
+          <div class="section_image">
+            <img
+              src="/assets/about_section.png"
+              alt=""
+              class="lg:h-[45rem] md:h-[35rem] h-[25rem]"
+            />
+          </div>
         </div>
       </div>
     </section>
 
-    <div id="section2" class="section--1 block lg:hidden">
+    <div id="section2" class="section--1 block smi:hidden">
       <div class="sect__image p-20">
-        <h2
-          class="text-white text-[2.9rem] leading-[3rem] smi:text-[4rem] text-center font-light md:leading-[5rem] font-['Aeonik TRIAL']"
-        >
+        <h2 class="text-white mt-[10rem] leading-[2rem] text-[1.7rem] text-center font-light">
           We are Farm Central Intelligence. We help in increasing farmers productivity by providing
           valueable and helpful input resources
         </h2>
@@ -44,15 +46,9 @@
     </div>
 
     <section class="py-[40px] md:py-[120px] px-[2rem] section_bg" id="section2">
-      <div class="section">
-        <h1
-          class="text-white text-[3.52rem] title md:text-[4.52rem] pb-2 font-normal font-['Aeonik TRIAL']"
-        >
-          Our Aims
-        </h1>
-        <p
-          class="text-white text-[1.5rem] smi:text-[2rem] lg:text-[2.52rem] mt-6 font-normal font-['Aeonik TRIAL']"
-        >
+      <div class="section mt-[12rem]">
+        <h1 class="text-white text-[1.7rem] smi:text-[2rem] title pb-2 font-bold">Our Aims</h1>
+        <p class="text-white text-[1.5rem] smi:text-[1.7rem] mt-6 font-light">
           We aim to not just educate farmers on agricultural practices but to also provide them with
           necessary tools and resources that will help them take action. Furthermore, we are using
           smart tracking data powered by our patenated IVR solutions to track farmers and
@@ -74,14 +70,14 @@
       <div class="section">
         <div class="flex flex-col">
           <div class="section_content">
-            <h2 class="text-white text-[4.52rem] mb-6 font-normal">Our Service</h2>
+            <h2 class="text-white text-[3rem] smi:text-[4rem] mb-6 font-medium">Our Service</h2>
           </div>
 
           <div class="section_service">
             <div class="service_content--1 h-[54.4rem] w-[40.4rem] hidden md:block">
               <div class="overlay">
-                <h1 class="text-[2.5rem] text-white font-medium">Farm Bank</h1>
-                <p class="text-[1.4rem] md:text-[1.8rem] text-white font-light">
+                <h1 class="text-[2rem] text-white font-medium">Farm Bank</h1>
+                <p class="text-[1.4rem] text-white font-light">
                   Farm Bank is the outreach part of FarmCI that focused on engaging and educating
                   farmer's on best agricultural practices and application through partnerships with
                   different stakeholders like cooperative, government etc, through this we are able
@@ -92,8 +88,8 @@
             </div>
             <div class="service_content--2 h-[54.4rem] w-[40.4rem] hidden md:block">
               <div class="overlay">
-                <h1 class="text-[2.5rem] text-white font-medium">Pay CI</h1>
-                <p class="text-[1.4rem] md:text-[1.8rem] text-white font-light">
+                <h1 class="text-[2rem] text-white font-medium">Pay CI</h1>
+                <p class="text-[1.4rem] text-white font-light">
                   PayCI is a resulting parternship between FarmCI and MoMo to provide voice enabled
                   mobile wallet to farmers that helps them undertake financial transactions or
                   enabled mobile wallet to farmers that helps them undertake financial transactions
@@ -108,8 +104,8 @@
         <div class="flex flex-col md:hidden">
           <div class="service_content--1 h-[44.4rem] w-[30.4rem]" v-show="isSection1">
             <div class="overlay">
-              <h1 class="text-[2.5rem] text-white font-medium">Farm Bank</h1>
-              <p class="text-[1.4rem] md:text-[1.8rem] text-white font-light">
+              <h1 class="text-[2rem] text-white font-medium">Farm Bank</h1>
+              <p class="text-[1.7rem] text-white font-light">
                 Farm Bank is the outreach part of FarmCI that focused on engaging and educating
                 farmer's on best agricultural practices and application through partnerships with
                 different stakeholders like cooperative, government etc, through this we are able to
@@ -121,8 +117,8 @@
 
           <div class="service_content--2 h-[44.4rem] w-[30.4rem]" v-show="!isSection1">
             <div class="overlay">
-              <h1 class="text-[2.5rem] text-white font-medium">Pay CI</h1>
-              <p class="text-[1.4rem] md:text-[1.8rem] text-white font-light">
+              <h1 class="text-[2rem] text-white font-medium">Pay CI</h1>
+              <p class="text-[1.7rem] text-white font-light">
                 PayCI is a resulting parternship between FarmCI and MoMo to provide voice enabled
                 mobile wallet to farmers that helps them undertake financial transactions or enabled
                 mobile wallet to farmers that helps them undertake financial transactions or savings
@@ -145,7 +141,9 @@
         </div>
 
         <div class="py-[40px] flex flex-col justify-center w-full">
-          <h1 class="mb-8 text-center text-[4rem] text-white font-normal">Our Partners</h1>
+          <h1 class="mb-8 text-center text-[3rem] smi:text-[4rem] text-white font-medium">
+            Our Partners
+          </h1>
           <div class="flex flex-wrap relative">
             <div class="slider">
               <div class="slide-track">
@@ -217,7 +215,7 @@
           <img src="/assets/why_logo.png" alt="" class="hidden lg:block absolute top-8 -right-16" />
         </div>
         <div class="md:pl-[4rem] lg:pl-[4rem] py-[4rem] lg:py-[inherit] px-8 lg:px-[inherit]">
-          <h1 class="text-white text-[3.2rem] md:text-[4.2rem] font-normal">Why Choose Us</h1>
+          <h1 class="text-white text-[3rem] md:text-[4rem] font-medium">Why Choose Us</h1>
           <div class="">
             <div class="flex py-6">
               <div
@@ -225,7 +223,7 @@
               >
                 <i class="fa-solid fa-headset text-2xl text-center w-full h-full text-primary"></i>
               </div>
-              <p class="text-white text-[1.6rem] ml-10 font-normal">
+              <p class="text-white text-[1.2rem] md:text-[1.4rem] ml-10 font-light">
                 IVR Support<br />
                 We provide an IVR support system which our clients can dial up
                 <br />
@@ -240,7 +238,7 @@
                   class="fa-solid fa-phone-volume text-[1.5rem] text-center w-full h-full text-primary rotate-30"
                 ></i>
               </div>
-              <p class="text-white text-[1.6rem] ml-10 font-normal">
+              <p class="text-white text-[1.2rem] md:text-[1.4rem] ml-10 font-light">
                 Farmers Insurance<br />
                 Provision of farmers insurance in form of loan to support our farmers<br />
                 for input acqusition
@@ -252,7 +250,7 @@
               >
                 <i class="fa-solid fa-tractor text-2xl text-center w-full h-full text-primary"></i>
               </div>
-              <p class="text-white text-[1.6rem] ml-10 font-normal">
+              <p class="text-white text-[1.2rem] md:text-[1.4rem] ml-10 font-light">
                 Connect Farmers<br />
                 We serve as an intermediary to connect our together our clients and <br />
                 local farmers around them.
@@ -266,7 +264,7 @@
                   class="fa-sharp fa-solid fa-timeline text-2xl text-center w-full h-full text-primary"
                 ></i>
               </div>
-              <p class="text-white text-[1.6rem] ml-10 font-normal">
+              <p class="text-white text-[1.2rem] md:text-[1.4rem] ml-10 font-light">
                 24/7 hours support<br />
                 Our Customer service is availablefor full support 24 hours all day
               </p>
@@ -280,11 +278,11 @@
       <div class="section">
         <div class="section__5 block lg:grid px-8 md:px-[inherit]">
           <div>
-            <h1 class="text-white text-[3rem] md:text-[6rem] font-normal leading-[1.2] mb-4">
+            <h1 class="text-white text-[3rem] md:text-[4rem] font-medium leading-[1] mb-2">
               Mission we <br />
               are working on
             </h1>
-            <p class="text-white text-[1.5rem] md:text-[2rem] font-light mb-6">
+            <p class="text-white text-[1.4rem] font-light mb-6">
               Problem: Inadequate resources needed for true agricultural practices. <br /><br />
               Solution : Empowering farmers to become a true food innovator through access to
               inputs, financing, agricultural knowledge and resource and a first class training and
@@ -313,16 +311,18 @@
             <img src="/assets/farm_store.png" alt="" />
           </div>
           <div>
-            <h1 class="text-white text-[3rem] md:text-[4rem] font-normal leading-[1.2] mb-4">
+            <h1 class="text-white text-[3rem] md:text-[4rem] font-medium leading-[1.2] mb-2">
               Traction
             </h1>
-            <p class="text-white text-[1.5rem] font-light mb-8">
+            <p class="text-white text-[1.4rem] font-light mb-8">
               We have helped 100 farmers connect to a better farming resources and almost 250 on our
               waiting list, chatbot and IVR assistance ready to be deployed for specific
               agricultural FAQ and enquiry.
             </p>
-            <h1 class="text-white text-[4rem] font-normal leading-[1.2] mb-4">Milestones</h1>
-            <p class="text-white text-[1.5rem] font-light">
+            <h1 class="text-white text-[3rem] md:text-[4rem] font-medium leading-[1] mb-2">
+              Milestones
+            </h1>
+            <p class="text-white text-[1.4rem] font-light">
               Raised $10k to reach 10,000 plus farmers, have made some partnership with organization
               like Soiless Farmlab and Afex commodity exchange etc
             </p>
@@ -379,7 +379,7 @@
     <section class="bg-secondary py-[4rem] md:py-[11rem]" id="section">
       <div class="section">
         <div class="px-[2rem] lg:px[inherit]">
-          <h1 class="text-center text-[3rem] md:text-[5rem] leading-[2rem] text-white font-normal">
+          <h1 class="text-center text-[3rem] md:text-[4rem] text-white font-medium">
             Meet the Heroes
           </h1>
           <div
@@ -389,7 +389,7 @@
               <img
                 src="/assets/farmci_founder.png"
                 alt=""
-                class="h-[38rem] w-[24rem] rounded-[80rem]"
+                class="mx-auto w-[18rem] h-[28rem] rounded-[40rem]"
               />
               <p class="text-[1.6rem] text-center leading-[2.3rem] mt-4 text-white font-light">
                 Yakubu Yinusa Temitope <br />
@@ -400,7 +400,7 @@
               <img
                 src="/assets/farmci_co-founder.png"
                 alt=""
-                class="h-[38rem] w-[24rem] rounded-[80rem]"
+                class="mx-auto w-[18rem] h-[28rem] rounded-[40rem]"
               />
               <p class="text-[1.6rem] leading-[2.3rem] mt-4 text-center text-white font-light">
                 Abdulrasak Ideraoluwa Temitope <br />
@@ -411,7 +411,7 @@
               <img
                 src="/assets/farm_procurement.png"
                 alt=""
-                class="h-[38rem] w-[24rem] rounded-[80rem]"
+                class="mx-auto w-[18rem] h-[28rem] rounded-[40rem]"
               />
               <p class="text-[1.6rem] leading-[2.3rem] mt-4 text-center text-white font-light">
                 Ojegele Boluwaji <br />
@@ -422,7 +422,7 @@
               <img
                 src="/assets/farm_consultant.png"
                 alt=""
-                class="h-[38rem] w-[24rem] rounded-[80rem]"
+                class="mx-auto w-[18rem] h-[28rem] rounded-[40rem]"
               />
               <p class="text-[1.6rem] leading-[2.3rem] mt-4 text-center text-white font-light">
                 Fashola Joseph Olamide <br />
@@ -434,14 +434,22 @@
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 slg:grid-cols-4 gap-10 align-center items-center mt-8"
           >
             <div class="flex flex-col justify-center w-[25rem] mx-auto">
-              <img src="/assets/farm_it.png" alt="" class="h-[38rem] w-[24rem] rounded-[80rem]" />
+              <img
+                src="/assets/farm_it.png"
+                alt=""
+                class="mx-auto w-[18rem] h-[28rem] rounded-[40rem]"
+              />
               <p class="text-[1.6rem] leading-[2.3rem] mt-4 text-center text-white font-light">
                 Francis Ajadioni <br />
                 IT Consultant
               </p>
             </div>
             <div class="flex flex-col justify-center w-[25rem] mx-auto">
-              <img src="/assets/farm_cto.png" alt="" class="h-[38rem] w-[24rem] rounded-[80rem]" />
+              <img
+                src="/assets/farm_cto.png"
+                alt=""
+                class="mx-auto w-[18rem] h-[28rem] rounded-[40rem]"
+              />
               <p class="text-[1.6rem] leading-[2.3rem] mt-4 text-center text-white font-light">
                 Boluwatife <br />
                 CTO
@@ -451,7 +459,7 @@
               <img
                 src="/assets/farm_designer.png"
                 alt=""
-                class="h-[38rem] w-[24rem] rounded-[80rem]"
+                class="mx-auto w-[18rem] h-[28rem] rounded-[40rem]"
               />
               <p class="text-[1.6rem] leading-[2.3rem] mt-4 text-center text-white font-light">
                 Aduragbemi <br />
@@ -469,6 +477,9 @@
 import { RouterLink, onBeforeRouteUpdate, onBeforeRouteLeave } from 'vue-router'
 import { ref, onMounted } from 'vue'
 
+ onMounted(() => {
+      document.title = 'Farm Central Intellience'
+    })
 // remove section-hidden
 
 //carousel
