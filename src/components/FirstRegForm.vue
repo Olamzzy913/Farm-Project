@@ -5,7 +5,7 @@
         <div>
           <label for="profile-pic-input">
             <img
-              :src="profilePicture || 'assets/upload_profile.jpg'"
+              :src="profilePicture || defaultPicture"
               alt="Profile Picture"
               class="w-[9rem] h-[9rem] md:w-[12rem] md:h-[12rem] mx-auto cursor-pointer rounded-full mb-10"
             />
